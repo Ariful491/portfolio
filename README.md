@@ -15,7 +15,6 @@ bun dev
 
 
 
+
+![Alt text](public/herobox-rounded.png)
  
-<p align="center" style="background-color: #222831; padding: 15px; border-radius: 15px;">
-  <img src="public/herobox.jpeg" style="border-radius: 15px; padding: 10px;" />
-</p>
