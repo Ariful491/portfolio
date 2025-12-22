@@ -16,5 +16,5 @@ bun dev
 
 
 
-![Alt text](public/herobox-rounded.png)
+![Alt text](public/hero-cornar-bg.png)
  
