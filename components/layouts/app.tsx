@@ -1,5 +1,5 @@
 import React from 'react';
-import Sidebar from "@/app/includes/frontend/sidebar";
+import Sidebar from "@/components/frontend/sidebar";
 
 
 interface RootLayoutProps {
@@ -8,7 +8,7 @@ interface RootLayoutProps {
 
 export default function AppLayout({children}: RootLayoutProps) {
     return (
-        <div  className='relative'>
+        <div  className='relative  bg-gray-100'>
             <div className="flex flex-row  ">
                 <Sidebar/>
                 <main className="w-full  md:ml-[300px]">

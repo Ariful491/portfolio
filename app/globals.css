@@ -40,6 +40,9 @@ body {
      color: var(--background);
     font-optical-sizing: auto;
 }
+* {
+    cursor: none !important;
+}
 
 @layer base {
 

@@ -1,9 +1,11 @@
-import Logo from "@/app/includes/frontend/logo";
-import SidebarLink from "@/app/includes/frontend/SidebarLink";
+'use client'
+
+import Logo from "@/components/frontend/logo";
+import SidebarLink from "@/components/frontend/SidebarLink";
 import React from "react";
 import {BoxIso, Facebook, Github, Internet, OpenBook} from "iconoir-react";
 import {usePathname} from 'next/navigation'
-import {Webhook} from "lucide-react";
+import {ExpandIcon, Webhook} from "lucide-react";
 
 
 export default function Sidebar() {
@@ -20,6 +22,16 @@ export default function Sidebar() {
             icon: <BoxIso></BoxIso>,
         },
         {
+            name: "About",
+            link: "#about",
+            icon: <OpenBook></OpenBook>,
+        },
+        {
+            name: "Experience",
+            link: "#experience",
+            icon: <ExpandIcon></ExpandIcon>,
+        },
+        {
             name: "Projects",
             link: "/",
             icon: <Webhook></Webhook>,
@@ -29,11 +41,6 @@ export default function Sidebar() {
             link: "/",
             icon: <Internet></Internet>,
         },
-        {
-            name: "About",
-            link: "/",
-            icon: <OpenBook></OpenBook>,
-        }
     ];
 
 
@@ -64,15 +71,15 @@ export default function Sidebar() {
 
                     <div className="flex justify-center mt-auto mb-5">
                         <a href="https://github.com/ " target="_blank"
-                           className="text-black shadow-lg mr-1 border-2 rounded-full p-2   bg-gray-100 hover:text-gray-600">
-                            <Github className="h-6 w-6"/>
+                           className="text-gray-500 h-12 w-12 mx-2  bg-gray-100 shadow-xl rounded-full   items-center flex  justify-center      hover:bg-amber-400 hover:text-white">
+                            <Github className=""/>
                         </a>
                         <a href="https://github.com/ " target="_blank"
-                           className="text-white shadow-lg mr-1 border-2 rounded-full p-2   bg-blue-600 hover:text-blue-600 hover:bg-white">
+                           className="text-gray-500 h-12 w-12 mx-2  bg-gray-100 shadow-xl rounded-full   items-center flex  justify-center      hover:bg-amber-400 hover:text-white">
                             <Facebook className="h-6 w-6"/>
                         </a>
                         <a href="https://github.com/ " target="_blank"
-                           className="text-black shadow-lg mr-1 border-2 rounded-full p-2   bg-gray-100 hover:text-gray-600">
+                           className="text-gray-500 h-12 w-12  mx-2 bg-gray-100 shadow-xl rounded-full   items-center flex  justify-center      hover:bg-amber-400 hover:text-white">
                             <Internet className="h-6 w-6"/>  
                         </a>
                     </div>
