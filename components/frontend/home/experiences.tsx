@@ -1,6 +1,11 @@
 'use client'
 
  import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react'
+import { AnimatePresence, easeOut, motion } from 'framer-motion'
+import { Fragment } from 'react'
+import {ArrowDownIcon} from "lucide-react";
+
 export default function Experiences() {
     const { ref, isVisible } = useScrollReveal();
     return (
@@ -43,7 +48,40 @@ export default function Experiences() {
 
                 </div>
 
+                <div className=" bg-white  w-full px-4 pt-32">
+                    <div className="mx-auto w-full max-w-lg divide-y divide-white/5 rounded-xl bg-white/5">
+                        <Disclosure as="div" className="w-full max-w-md">
+                            {({ open }) => (
+                                <>
+                                    <DisclosureButton className="w-full border-b pb-2 text-left">Is team pricing available?</DisclosureButton>
+                                    <div className="overflow-hidden py-2">
+                                        <AnimatePresence>
+                                            {open && (
+                                                <DisclosurePanel static as={Fragment}>
+                                                    <motion.div
+                                                        initial={{ opacity: 0, y: -24 }}
+                                                        animate={{ opacity: 1, y: 0 }}
+                                                        exit={{ opacity: 0, y: -24 }}
+                                                        transition={{ duration: 0.2, ease: easeOut }}
+                                                        className="origin-top"
+                                                    >
+                                                        Yes! You can purchase a license that you can share with your entire team.
+                                                    </motion.div>
+                                                </DisclosurePanel>
+                                            )}
+                                        </AnimatePresence>
+                                    </div>
+                                </>
+                            )}
+                        </Disclosure>
+
+                    </div>
+                </div>
+
             </div>
         </>
     )
 }
+
+
+

@@ -1,93 +1,100 @@
-'use client'
+'use client';
 
-import Logo from "@/components/frontend/logo";
-import SidebarLink from "@/components/frontend/SidebarLink";
-import React from "react";
-import {BoxIso, Facebook, Github, Internet, OpenBook} from "iconoir-react";
-import {usePathname} from 'next/navigation'
-import {ExpandIcon, Webhook} from "lucide-react";
+import React, {useState} from 'react';
+import Logo from '@/components/frontend/logo';
+import SidebarLink from '@/components/frontend/SidebarLink';
+import {
+    BoxIso,
+    Facebook,
+    Github,
+    Internet,
+    OpenBook,
+} from 'iconoir-react';
+import {MenuIcon, X, PanelBottomClose} from 'lucide-react';
 
+interface MenuItem {
+    name: string;
+    link: string;
+    icon: React.ReactNode;
+}
 
-export default function Sidebar() {
-    const pathName = usePathname()
+const menus: MenuItem[] = [
+    {name: 'Home', link: '/', icon: <BoxIso/>},
+    {name: 'About', link: '#about', icon: <OpenBook/>},
+    {name: 'Experience', link: '#experience', icon: <OpenBook/>},
+    {name: 'Projects', link: '/', icon: <OpenBook/>},
+    {name: 'Services', link: '/', icon: <Internet/>},
+];
 
-    const menus: {
-        name: string;
-        link: string;
-        icon: React.ReactNode;
-    }[] = [
-        {
-            name: "Home",
-            link: "/",
-            icon: <BoxIso></BoxIso>,
-        },
-        {
-            name: "About",
-            link: "#about",
-            icon: <OpenBook></OpenBook>,
-        },
-        {
-            name: "Experience",
-            link: "#experience",
-            icon: <ExpandIcon></ExpandIcon>,
-        },
-        {
-            name: "Projects",
-            link: "/",
-            icon: <Webhook></Webhook>,
-        },
-        {
-            name: "Services",
-            link: "/",
-            icon: <Internet></Internet>,
-        },
-    ];
-
-
+const Sidebar: React.FC = () => {
+    const [openMenu, setOpenMenu] = useState<boolean>(false);
 
     return (
-        <div className="">
-            <div
-                className=" hidden md:block    fixed h-screen w-[300px] bg-white  transform -translate-x-full md:translate-x-0    transition-all duration-500">
-                <aside className="fixed h-screen w-[300px]   animate-slide-in-from-left flex flex-col    ">
+        <>
 
-                    <div className="p-2">
-                        <div className="flex justify-center rounded-full mt-10">
-                            <Logo>  </Logo>
-                        </div>
+            <button
+                type="button"
+                aria-label="Open Menu"
+                onClick={() => setOpenMenu(true)}
+                className={`md:hidden fixed top-4 left-4 z-50  bg-white p-2 rounded-md ${openMenu ? 'rotate-190' : 'translate-x-0'}`}
 
-                        <div className="flex flex-col space-y-1 font-bold   text-center mt-4">
-                            {
-                                menus.map((menu, index) =>
-                                    <SidebarLink key={index} >
-                                        <span className="mr-2">{menu.icon}</span>
-                                        {menu.name} </SidebarLink>
-                                )
-                            }
+            >
+                <MenuIcon
+                    className="w-6 h-6  text-gray-500 hover:text-gray-60 transaction-all duration-300 ease-in-out"/>
+            </button>
 
-                        </div>
 
+            {openMenu && (
+                <div
+                    className="fixed inset-0 z-40   bg-gray-50/10 backdrop-blur-2xl md:hidden"
+                    onClick={() => setOpenMenu(false)}
+                />
+            )}
+
+
+            <aside
+                className={`fixed top-0 left-0 z-50 h-screen w-[300px] bg-white
+        transform transition-transform duration-1000 ease-in-out
+        ${openMenu ? 'translate-x-0' : '-translate-x-full'}
+        md:translate-x-0`}
+            >
+
+                <div className="md:hidden flex absolute right-0 bg-gray-100 m-2 rounded-md justify-end p-2">
+                    <button
+                        type="button"
+                        aria-label="Close Menu"
+                        onClick={() => setOpenMenu(false)}
+                    >
+                        <PanelBottomClose className="w-6 h-6 rotate-90 text-gray-500 hover:text-gray-600"/>
+                    </button>
+                </div>
+
+                <div className="flex flex-col h-full p-2 mx-auto space-y-4 overflow-y-auto">
+                    <div className="flex justify-center mt-4">
+                        <Logo>.</Logo>
                     </div>
 
-                    <div className="flex justify-center mt-auto mb-5">
-                        <a href="https://github.com/ " target="_blank"
-                           className="text-gray-500 h-12 w-12 mx-2  bg-gray-100 shadow-xl rounded-full   items-center flex  justify-center      hover:bg-amber-400 hover:text-white">
-                            <Github className=""/>
-                        </a>
-                        <a href="https://github.com/ " target="_blank"
-                           className="text-gray-500 h-12 w-12 mx-2  bg-gray-100 shadow-xl rounded-full   items-center flex  justify-center      hover:bg-amber-400 hover:text-white">
-                            <Facebook className="h-6 w-6"/>
-                        </a>
-                        <a href="https://github.com/ " target="_blank"
-                           className="text-gray-500 h-12 w-12  mx-2 bg-gray-100 shadow-xl rounded-full   items-center flex  justify-center      hover:bg-amber-400 hover:text-white">
-                            <Internet className="h-6 w-6"/>  
-                        </a>
+                    <nav className="flex flex-col space-y-2 font-bold text-center mt-6 ">
+
+                        {
+                            menus.map((menu, index) =>
+                                <SidebarLink key={index}>
+                                    <span className="mr-2">{menu.icon}</span>
+                                    {menu.name} </SidebarLink>
+                            )
+                        }
+
+
+                    </nav>
+                    <div className="flex justify-center mt-auto  ">
+                        <a className="social-btn"><Github/></a>
+                        <a className="social-btn"><Facebook/></a>
+                        <a className="social-btn"><Internet/></a>
                     </div>
-                </aside>
+                </div>
+            </aside>
+        </>
+    );
+};
 
-            </div>
-        </div>
-
-    )
-
-}
+export default Sidebar;
