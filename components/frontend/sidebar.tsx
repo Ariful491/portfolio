@@ -1,6 +1,6 @@
 'use client';
 
-import React, {useState} from 'react';
+import React, {useEffect,useState} from 'react';
 import Logo from '@/components/frontend/logo';
 import SidebarLink from '@/components/frontend/SidebarLink';
 import {
@@ -10,7 +10,7 @@ import {
     Internet,
     OpenBook,
 } from 'iconoir-react';
-import {MenuIcon, X, PanelBottomClose} from 'lucide-react';
+import {MenuIcon,   PanelBottomClose} from 'lucide-react';
 
 interface MenuItem {
     name: string;
@@ -19,31 +19,49 @@ interface MenuItem {
 }
 
 const menus: MenuItem[] = [
-    {name: 'Home', link: '/', icon: <BoxIso/>},
-    {name: 'About', link: '#about', icon: <OpenBook/>},
-    {name: 'Experience', link: '#experience', icon: <OpenBook/>},
-    {name: 'Projects', link: '/', icon: <OpenBook/>},
-    {name: 'Services', link: '/', icon: <Internet/>},
+    {   name: 'Home',
+        link: '/',
+        icon: <BoxIso/>
+    },
+    {
+        name: 'About',
+        link: '#about',
+        icon: <OpenBook/>
+    },
+    {   name: 'Experience',
+        link: '#experience',
+        icon: <OpenBook/>
+    },
+    {
+        name: 'Projects',
+        link: '/',
+        icon: <OpenBook/>
+    },
+    {   name: 'Services',
+        link: '/services',
+        icon: <Internet/>
+    },
 ];
+
 
 const Sidebar: React.FC = () => {
     const [openMenu, setOpenMenu] = useState<boolean>(false);
 
+    useEffect(() => {
+        if (openMenu) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'visible';
+        }
+    }, [openMenu]);
+
     return (
+
+
         <>
-
-            <button
-                type="button"
-                aria-label="Open Menu"
-                onClick={() => setOpenMenu(true)}
-                className={`md:hidden fixed top-4 left-4 z-50  bg-white p-2 rounded-md ${openMenu ? 'rotate-190' : 'translate-x-0'}`}
-
-            >
-                <MenuIcon
-                    className="w-6 h-6  text-gray-500 hover:text-gray-60 transaction-all duration-300 ease-in-out"/>
+            <button type="button" aria-label="Open Menu" onClick={() => setOpenMenu(true)} className={`md:hidden fixed top-4 left-4 z-50  bg-white p-2 rounded-md ${openMenu ? 'rotate-190' : 'translate-x-0'}` }>
+                <MenuIcon className="w-6 h-6  text-gray-500 hover:text-gray-60 transaction-all duration-300 ease-in-out"/>
             </button>
-
-
             {openMenu && (
                 <div
                     className="fixed inset-0 z-40   bg-gray-50/10 backdrop-blur-2xl md:hidden"
@@ -51,21 +69,10 @@ const Sidebar: React.FC = () => {
                 />
             )}
 
-
-            <aside
-                className={`fixed top-0 left-0 z-50 h-screen w-[300px] bg-white
-        transform transition-transform duration-1000 ease-in-out
-        ${openMenu ? 'translate-x-0' : '-translate-x-full'}
-        md:translate-x-0`}
-            >
-
-                <div className="md:hidden flex absolute right-0 bg-gray-100 m-2 rounded-md justify-end p-2">
-                    <button
-                        type="button"
-                        aria-label="Close Menu"
-                        onClick={() => setOpenMenu(false)}
-                    >
-                        <PanelBottomClose className="w-6 h-6 rotate-90 text-gray-500 hover:text-gray-600"/>
+            <aside  className={`fixed top-0 left-0 z-50 h-screen w-[300px] bg-white transform transition-transform duration-1000 ease-in-out  ${openMenu ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}>
+                <div className="md:hidden flex absolute right-0 bg-gray-100 m-2  transaction-all duration-300 rounded-md justify-end p-2">
+                    <button type="button"  aria-label="Close Menu"   onClick={() => setOpenMenu(false)}>
+                        <PanelBottomClose className={`w-6 h-6  transaction-all duration-1200  text-gray-500 hover:text-gray-600 ${openMenu ? 'rotate-90' : 'rotate-0'}`} />
                     </button>
                 </div>
 
@@ -78,13 +85,14 @@ const Sidebar: React.FC = () => {
 
                         {
                             menus.map((menu, index) =>
-                                <SidebarLink key={index}>
+                                <SidebarLink key={index}
+                                href={menu.link}
+                                             _target=  '_blank'
+                                >
                                     <span className="mr-2">{menu.icon}</span>
                                     {menu.name} </SidebarLink>
                             )
                         }
-
-
                     </nav>
                     <div className="flex justify-center mt-auto  ">
                         <a className="social-btn"><Github/></a>
