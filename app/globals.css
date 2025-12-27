@@ -41,7 +41,7 @@ body {
     font-optical-sizing: auto;
 }
 * {
-    cursor: none !important;
+   /* cursor: none !important; */
 }
 
 @layer base {

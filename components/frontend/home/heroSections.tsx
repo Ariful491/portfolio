@@ -17,6 +17,7 @@ import JqueryLogo from "@/public/jQuery.svg";
 import TailwindLogo from "@/public/Tailwind CSS.svg";
 import MySQLLogo from "@/public/SQL Developer.svg";
 import PHPLogo from "@/public/PHP.svg";
+import {BorderBeam} from "@/components/ui/border-beam";
 
 export default function HeroSections() {
 
@@ -124,13 +125,18 @@ export default function HeroSections() {
                             </p>
                             <div className="mt-5 fa">
                                 <button
-                                    className="bg-white hover:bg-amber-500 hover:shadow-lg hover:px-10 hover:text-white  transition-all   py-3 px-6 font-bold text-2xl  rounded-full ">
+                                    className="relative  bg-linear-to-bl from-white to-white drop-shadow-gray-100 shadow-2xl   hover:from-amber-500 hover:to-amber-100 hover:shadow-lg hover:px-10 hover:text-white  transition-all   py-3 px-6 font-bold text-2xl  rounded-full ">
 
                                    <span className="flex    items-center gap-4">
 
                                    Download CV
                                         <DownloadCircle className="h-6  w-6"/>
                                    </span>
+
+                                    <BorderBeam
+                                        duration={2} size={95}
+                                        className="from-transparent via-amber-600 to-transparent"
+                                    />
 
                                 </button>
                             </div>

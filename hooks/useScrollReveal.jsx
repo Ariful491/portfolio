@@ -13,7 +13,7 @@ export function useScrollReveal({ threshold = 0.1, once = true } = {}) {
                     if (entry.isIntersecting) {
                         setIsVisible(true);
                         if (once) {
-                            observer.unobserve(entry.target); // একবার হলে আর observe করবে না
+                            observer.unobserve(entry.target);
                         }
                     }
                 });

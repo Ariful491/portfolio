@@ -84,14 +84,7 @@ const Sidebar: React.FC = () => {
                     <nav className="flex flex-col space-y-2 font-bold text-center mt-6 ">
 
                         {
-                            menus.map((menu, index) =>
-                                <SidebarLink key={index}
-                                href={menu.link}
-                                             _target=  '_blank'
-                                >
-                                    <span className="mr-2">{menu.icon}</span>
-                                    {menu.name} </SidebarLink>
-                            )
+                            menus.map((menu, index) =><SidebarLink key={index} href={menu.link} target='_blank'><span className="mr-2">{menu.icon}</span>{menu.name} </SidebarLink>)
                         }
                     </nav>
                     <div className="flex justify-center mt-auto  ">

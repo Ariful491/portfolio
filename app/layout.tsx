@@ -17,6 +17,10 @@ export const metadata: Metadata = {
   description: "Welcome to the personal portfolio of Ariful Hoque, a passionate web developer and designer. Explore my projects, skills, and experiences in the world of web development.",
 };
 import { IconoirProvider } from "iconoir-react";
+import Head from "next/head";
+
+
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -26,6 +30,10 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+    <Head>
+        <link rel="icon" href={'/public/CakePHP.svg'} sizes="any" />
+
+    </Head>
       <body
           className={`  h-lvh  ${geistSans.variable} ${geistMono.variable} antialiased`}
 
