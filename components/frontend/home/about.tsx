@@ -2,6 +2,7 @@
 
 import {Animation} from "@/components/frontend/home/animation";
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import {Button} from "@/components/ui/button";
 export default function About() {
     const { ref, isVisible } = useScrollReveal();
     return (
@@ -26,7 +27,7 @@ export default function About() {
 
                   <div
                       ref={ref}
-                      className={`bg-white/60  backdrop-blur-md rounded-lg text-shadow-2xs -mr-15 z-10 align-middle my-auto p-6 duration-2000 ease-out ${
+                      className={`bg-white   backdrop-blur-md rounded-lg text-shadow-2xs -mr-15 z-10 align-middle my-auto p-6 duration-2000 ease-out ${
                           isVisible
                               ? 'opacity-100 translate-y-0  animate-fade animate-ease-in-out animate-normal\n'
                               : 'opacity-0 translate-y-10'
@@ -38,12 +39,13 @@ export default function About() {
                           technologies, I strive to create seamless user experiences and efficient server-side
                           solutions. My goal is to leverage my skills to contribute to innovative projects and
                           drive digital transformation.
+
                       </p>
                   </div>
 
                   <div
                       ref={ref}
-                      className={` bg-gray-50 rounded-lg m-4  justify-center align-middle  my-auto p-6  duration-2500 ease-out ${
+                      className={`  bg-white rounded-lg m-4  justify-center align-middle  my-auto p-6  duration-2500 ease-out ${
                           isVisible
                               ? 'opacity-100 translate-y-0  animate-fade animate-ease-in-out animate-normal\n'
                               : 'opacity-0 translate-y-10'

@@ -11,7 +11,7 @@ export default function Home() {
 
     return (
         <AppLayout>
-            <div className=" relative     w-full items-center justify-center   rounded-lg    ">
+            <div className=" relative    items-center justify-center   rounded-lg    ">
                 <AnimatedGridPattern
                     numSquares={30}
                     maxOpacity={0.1}
