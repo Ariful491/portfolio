@@ -149,3 +149,20 @@ body {
     @apply text-gray-500 h-12 w-12 mx-2 bg-gray-100 shadow-xl rounded-full
     flex items-center justify-center hover:bg-amber-400 hover:text-white;
 }
+/*
+* {
+    cursor: none;
+}
+*/
+
+
+.cursor-pointer-active {
+    width: 22px !important;
+    height: 22px !important;
+    background: transparent !important;
+    border: 2px solid white;
+}
+
+/*.cursor-pointer-active:active {*/
+/*    transform: scale(0.85);*/
+/*}*/
