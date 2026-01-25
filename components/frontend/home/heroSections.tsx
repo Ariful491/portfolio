@@ -21,14 +21,15 @@ import {BorderBeam} from "@/components/ui/border-beam";
 
 export default function HeroSections() {
 
-    const tiltRef = useRef(null);
+    const tiltRef = useRef<HTMLDivElement | null>(null);
+
 
     useEffect(() => {
-        const el = tiltRef.current;
+        const el = tiltRef.current as HTMLDivElement;
 
         const SIDEBAR_WIDTH = 300;
 
-        const handleMove = (e) => {
+        const handleMove = (e:MouseEvent ) => {
             const x = e.clientX;
             const y = e.clientY;
 
