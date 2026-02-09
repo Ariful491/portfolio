@@ -4,7 +4,11 @@ import About from "@/components/frontend/home/about";
 import { SmoothCursor } from "@/components/ui/smooth-cursor"
 import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern"
 import Experiences from "@/components/frontend/home/experiences";
-import {cn} from "@/lib/utils";
+import Projects from "@/components/frontend/home/projects";
+import Skills from "@/components/frontend/home/skills";
+import Education from "@/components/frontend/home/education";
+import Contact from "@/components/frontend/home/contact";
+import { cn } from "@/lib/utils";
 
 export default function Home() {
 
@@ -23,10 +27,14 @@ export default function Home() {
                     )}
                 />
 
-            <HeroSections/>
+                <HeroSections />
             </div>
-            <About/>
-            <Experiences/>
+            <About />
+            <Experiences />
+            <Projects />
+            <Skills />
+            <Education />
+            <Contact />
         </AppLayout>
     );
 }
