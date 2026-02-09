@@ -91,7 +91,7 @@ export default function Projects() {
                 >
                     Professional Projects
                 </h1>
-                <p className={`text-gray-500 mb-12 ${isVisible ? 'animate-fade-up' : 'opacity-0'
+                <p className={`text-gray-500 mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 animate-fade-up' : 'opacity-0'
                     }`}>
                     A selection of projects I&apos;ve contributed to, showcasing full-stack development expertise
                 </p>
@@ -100,90 +100,7 @@ export default function Projects() {
             {/* Featured Projects */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 {projectsData.map((project, index) => (
-                    <div
-                        key={index}
-                        ref={ref}
-                        className={`group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 ${isVisible
-                            ? 'opacity-100 translate-y-0 animate-fade-up'
-                            : 'opacity-0 translate-y-10'
-                            } ${project.featured ? 'ring-2 ring-amber-200' : ''}`}
-                        style={{ animationDelay: `${index * 100}ms` }}
-                    >
-                        {/* Project Image */}
-                        <div className="relative h-48 bg-gradient-to-br from-amber-100 to-orange-100 overflow-hidden">
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <div className="text-6xl font-bold text-amber-300/50">
-                                    {project.title.charAt(0)}
-                                </div>
-                            </div>
-                            {project.featured && (
-                                <span className="absolute top-3 right-3 bg-amber-500 text-white text-xs font-bold px-2 py-1 rounded-full">
-                                    Featured
-                                </span>
-                            )}
-                            {/* Overlay on hover */}
-                            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                                {project.liveUrl && (
-                                    <a
-                                        href={project.liveUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="p-3 bg-white rounded-full hover:bg-amber-500 hover:text-white transition-colors"
-                                    >
-                                        <ExternalLink className="w-5 h-5" />
-                                    </a>
-                                )}
-                                {project.githubUrl && (
-                                    <a
-                                        href={project.githubUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="p-3 bg-white rounded-full hover:bg-gray-800 hover:text-white transition-colors"
-                                    >
-                                        <Github className="w-5 h-5" />
-                                    </a>
-                                )}
-                            </div>
-                        </div>
-
-                        {/* Project Content */}
-                        <div className="p-6">
-                            <h3 className="text-xl font-bold text-gray-800 mb-1">
-                                {project.title}
-                            </h3>
-                            <p className="text-amber-600 font-medium text-sm mb-3">
-                                {project.subtitle}
-                            </p>
-                            <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">
-                                {project.description}
-                            </p>
-
-                            {/* Impact Badge */}
-                            <div className="flex items-center gap-2 mb-4">
-                                <span className="inline-flex items-center gap-1 text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">
-                                    <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                                    {project.impact}
-                                </span>
-                            </div>
-
-                            {/* Technologies */}
-                            <div className="flex flex-wrap gap-2">
-                                {project.technologies.slice(0, 4).map((tech, techIndex) => (
-                                    <span
-                                        key={techIndex}
-                                        className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-md hover:bg-amber-100 hover:text-amber-700 transition-colors"
-                                    >
-                                        {tech}
-                                    </span>
-                                ))}
-                                {project.technologies.length > 4 && (
-                                    <span className="text-xs text-gray-400">
-                                        +{project.technologies.length - 4} more
-                                    </span>
-                                )}
-                            </div>
-                        </div>
-                    </div>
+                    <ProjectCard key={index} project={project} />
                 ))}
             </div>
 
@@ -200,5 +117,95 @@ export default function Projects() {
                 </a>
             </div>
         </section>
+    );
+}
+
+// Separate component for each project card with its own scroll reveal
+function ProjectCard({ project }: { project: Project }) {
+    const { ref, isVisible } = useScrollReveal();
+
+    return (
+        <div
+            ref={ref}
+            className={`group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 ${isVisible
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-10'
+                } ${project.featured ? 'ring-2 ring-amber-200' : ''}`}
+        >
+            {/* Project Image */}
+            <div className="relative h-48 bg-gradient-to-br from-amber-100 to-orange-100 overflow-hidden">
+                <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-6xl font-bold text-amber-300/50">
+                        {project.title.charAt(0)}
+                    </div>
+                </div>
+                {project.featured && (
+                    <span className="absolute top-3 right-3 bg-amber-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                        Featured
+                    </span>
+                )}
+                {/* Overlay on hover */}
+                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+                    {project.liveUrl && (
+                        <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-3 bg-white rounded-full hover:bg-amber-500 hover:text-white transition-colors"
+                        >
+                            <ExternalLink className="w-5 h-5" />
+                        </a>
+                    )}
+                    {project.githubUrl && (
+                        <a
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-3 bg-white rounded-full hover:bg-gray-800 hover:text-white transition-colors"
+                        >
+                            <Github className="w-5 h-5" />
+                        </a>
+                    )}
+                </div>
+            </div>
+
+            {/* Project Content */}
+            <div className="p-6">
+                <h3 className="text-xl font-bold text-gray-800 mb-1">
+                    {project.title}
+                </h3>
+                <p className="text-amber-600 font-medium text-sm mb-3">
+                    {project.subtitle}
+                </p>
+                <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">
+                    {project.description}
+                </p>
+
+                {/* Impact Badge */}
+                <div className="flex items-center gap-2 mb-4">
+                    <span className="inline-flex items-center gap-1 text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">
+                        <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                        {project.impact}
+                    </span>
+                </div>
+
+                {/* Technologies */}
+                <div className="flex flex-wrap gap-2">
+                    {project.technologies.slice(0, 4).map((tech, techIndex) => (
+                        <span
+                            key={techIndex}
+                            className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-md hover:bg-amber-100 hover:text-amber-700 transition-colors"
+                        >
+                            {tech}
+                        </span>
+                    ))}
+                    {project.technologies.length > 4 && (
+                        <span className="text-xs text-gray-400">
+                            +{project.technologies.length - 4} more
+                        </span>
+                    )}
+                </div>
+            </div>
+        </div>
     );
 }

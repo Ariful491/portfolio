@@ -79,58 +79,65 @@ export default function Experiences() {
                 <div className="md:hidden absolute left-4 top-0 w-1 h-full bg-gradient-to-b from-amber-300 via-amber-400 to-amber-300 rounded-full" />
 
                 {experienceData.map((exp, index) => (
-                    <div
-                        key={index}
-                        ref={ref}
-                        className={`relative flex items-center mb-8 md:mb-12 ${index % 2 === 0 ? 'md:justify-start' : 'md:justify-end'
-                            } justify-start ${isVisible
-                                ? `opacity-100 translate-y-0 animate-fade animate-ease-in-out`
-                                : 'opacity-0 translate-y-10'
-                            }`}
-                        style={{ animationDelay: `${index * 150}ms` }}
-                    >
-                        {/* Timeline dot - mobile position */}
-                        <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 z-20">
-                            <div className="w-4 h-4 md:w-5 md:h-5 bg-white border-4 border-amber-400 rounded-full shadow-lg ring-4 ring-white" />
-                        </div>
-
-                        {/* Experience card - full width on mobile */}
-                        <div
-                            className={`w-full ml-10 md:ml-0 md:w-5/12 bg-white rounded-xl shadow-lg p-4 md:p-6 hover:shadow-xl transition-shadow duration-300 ${index % 2 === 0 ? 'md:mr-auto md:text-right md:pr-8' : 'md:ml-auto md:text-left md:pl-8'
-                                }`}
-                        >
-                            {/* Duration badge */}
-                            <span className="inline-block bg-amber-100 text-amber-700 text-xs font-semibold px-3 py-1 rounded-full mb-3">
-                                {exp.duration}
-                            </span>
-
-                            <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-1">
-                                {exp.title}
-                            </h3>
-                            <p className={`font-semibold ${exp.companyColor} mb-2`}>
-                                {exp.company}
-                            </p>
-                            <p className="text-gray-600 text-sm leading-relaxed mb-3">
-                                {exp.description}
-                            </p>
-
-                            {/* Technologies */}
-                            {exp.technologies && (
-                                <div className={`flex flex-wrap gap-2 justify-start ${index % 2 === 0 ? 'md:justify-end' : 'md:justify-start'}`}>
-                                    {exp.technologies.map((tech, techIndex) => (
-                                        <span
-                                            key={techIndex}
-                                            className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-md"
-                                        >
-                                            {tech}
-                                        </span>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-                    </div>
+                    <ExperienceCard key={index} exp={exp} index={index} />
                 ))}
             </div>
         </section>
+    );
+}
+
+// Separate component for each experience card with its own scroll reveal
+function ExperienceCard({ exp, index }: { exp: Experience; index: number }) {
+    const { ref, isVisible } = useScrollReveal();
+
+    return (
+        <div
+            ref={ref}
+            className={`relative flex items-center mb-8 md:mb-12 ${index % 2 === 0 ? 'md:justify-start' : 'md:justify-end'
+                } justify-start transition-all duration-1000 ease-out ${isVisible
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-10'
+                }`}
+        >
+            {/* Timeline dot - mobile position */}
+            <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 z-20">
+                <div className="w-4 h-4 md:w-5 md:h-5 bg-white border-4 border-amber-400 rounded-full shadow-lg ring-4 ring-white" />
+            </div>
+
+            {/* Experience card - full width on mobile */}
+            <div
+                className={`w-full ml-10 md:ml-0 md:w-5/12 bg-white rounded-xl shadow-lg p-4 md:p-6 hover:shadow-xl transition-shadow duration-300 ${index % 2 === 0 ? 'md:mr-auto md:text-right md:pr-8' : 'md:ml-auto md:text-left md:pl-8'
+                    }`}
+            >
+                {/* Duration badge */}
+                <span className="inline-block bg-amber-100 text-amber-700 text-xs font-semibold px-3 py-1 rounded-full mb-3">
+                    {exp.duration}
+                </span>
+
+                <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-1">
+                    {exp.title}
+                </h3>
+                <p className={`font-semibold ${exp.companyColor} mb-2`}>
+                    {exp.company}
+                </p>
+                <p className="text-gray-600 text-sm leading-relaxed mb-3">
+                    {exp.description}
+                </p>
+
+                {/* Technologies */}
+                {exp.technologies && (
+                    <div className={`flex flex-wrap gap-2 justify-start ${index % 2 === 0 ? 'md:justify-end' : 'md:justify-start'}`}>
+                        {exp.technologies.map((tech, techIndex) => (
+                            <span
+                                key={techIndex}
+                                className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-md"
+                            >
+                                {tech}
+                            </span>
+                        ))}
+                    </div>
+                )}
+            </div>
+        </div>
     );
 }

@@ -19,13 +19,15 @@ import NuxtLogo from "@/public/Nuxt JS.svg";
 import NestLogo from "@/public/nest.svg";
 import RedisLogo from "@/public/Redis.svg";
 
+interface Skill {
+    name: string;
+    logo?: any;
+    level: number;
+}
+
 interface SkillCategory {
     name: string;
-    skills: {
-        name: string;
-        logo?: any;
-        level: number; // 1-5
-    }[];
+    skills: Skill[];
 }
 
 const skillCategories: SkillCategory[] = [
@@ -95,7 +97,7 @@ export default function Skills() {
                 >
                     Technical Skills
                 </h1>
-                <p className={`text-gray-500 mb-12 ${isVisible ? 'animate-fade-up' : 'opacity-0'
+                <p className={`text-gray-500 mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 animate-fade-up' : 'opacity-0'
                     }`}>
                     3.5+ years of hands-on experience with modern web technologies
                 </p>
@@ -103,62 +105,69 @@ export default function Skills() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 {skillCategories.map((category, catIndex) => (
-                    <div
-                        key={catIndex}
-                        ref={ref}
-                        className={`bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 ${isVisible
-                            ? 'opacity-100 translate-y-0 animate-fade-up'
-                            : 'opacity-0 translate-y-10'
-                            }`}
-                        style={{ animationDelay: `${catIndex * 100}ms` }}
-                    >
-                        <h3 className="text-lg font-bold text-gray-800 mb-4 pb-2 border-b border-gray-100">
-                            {category.name}
-                        </h3>
-                        <div className="space-y-3">
-                            {category.skills.map((skill, skillIndex) => (
-                                <div key={skillIndex} className="flex items-center gap-3">
-                                    {/* Logo */}
-                                    <div className="w-8 h-8 flex items-center justify-center bg-gray-50 rounded-lg">
-                                        {skill.logo ? (
-                                            <Image
-                                                src={skill.logo}
-                                                alt={skill.name}
-                                                className="w-5 h-5"
-                                            />
-                                        ) : (
-                                            <span className="text-xs font-bold text-gray-400">
-                                                {skill.name.charAt(0)}
-                                            </span>
-                                        )}
-                                    </div>
+                    <SkillCard key={catIndex} category={category} />
+                ))}
+            </div>
+        </section>
+    );
+}
 
-                                    {/* Skill name and level */}
-                                    <div className="flex-1">
-                                        <div className="flex justify-between items-center mb-1">
-                                            <span className="text-sm font-medium text-gray-700">
-                                                {skill.name}
-                                            </span>
-                                        </div>
-                                        {/* Level indicator */}
-                                        <div className="flex gap-1">
-                                            {[1, 2, 3, 4, 5].map((level) => (
-                                                <div
-                                                    key={level}
-                                                    className={`h-1.5 flex-1 rounded-full ${level <= skill.level
-                                                        ? 'bg-amber-400'
-                                                        : 'bg-gray-200'
-                                                        }`}
-                                                />
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
+// Separate component for each skill card with its own scroll reveal
+function SkillCard({ category }: { category: SkillCategory }) {
+    const { ref, isVisible } = useScrollReveal();
+
+    return (
+        <div
+            ref={ref}
+            className={`bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all duration-500 ${isVisible
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-10'
+                }`}
+        >
+            <h3 className="text-lg font-bold text-gray-800 mb-4 pb-2 border-b border-gray-100">
+                {category.name}
+            </h3>
+            <div className="space-y-3">
+                {category.skills.map((skill, skillIndex) => (
+                    <div key={skillIndex} className="flex items-center gap-3">
+                        {/* Logo */}
+                        <div className="w-8 h-8 flex items-center justify-center bg-gray-50 rounded-lg">
+                            {skill.logo ? (
+                                <Image
+                                    src={skill.logo}
+                                    alt={skill.name}
+                                    className="w-5 h-5"
+                                />
+                            ) : (
+                                <span className="text-xs font-bold text-gray-400">
+                                    {skill.name.charAt(0)}
+                                </span>
+                            )}
+                        </div>
+
+                        {/* Skill name and level */}
+                        <div className="flex-1">
+                            <div className="flex justify-between items-center mb-1">
+                                <span className="text-sm font-medium text-gray-700">
+                                    {skill.name}
+                                </span>
+                            </div>
+                            {/* Level indicator */}
+                            <div className="flex gap-1">
+                                {[1, 2, 3, 4, 5].map((level) => (
+                                    <div
+                                        key={level}
+                                        className={`h-1.5 flex-1 rounded-full ${level <= skill.level
+                                            ? 'bg-amber-400'
+                                            : 'bg-gray-200'
+                                            }`}
+                                    />
+                                ))}
+                            </div>
                         </div>
                     </div>
                 ))}
             </div>
-        </section>
+        </div>
     );
 }
