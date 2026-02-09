@@ -2,6 +2,7 @@ import React from 'react';
 import Sidebar from "@/components/frontend/sidebar";
 import CursorShadow from "@/components/ui/CursorShadow";
 import CustomCursor from "@/components/ui/CustomCursor";
+import Footer from "@/components/frontend/Footer";
 
 
 interface RootLayoutProps {
@@ -20,7 +21,9 @@ export default function AppLayout({children}: RootLayoutProps) {
                         {children}
                     </div>
                 </main>
+
             </div>
+            <Footer/>
         </div>
     );
 }

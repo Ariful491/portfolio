@@ -144,12 +144,7 @@ export default function HeroSections() {
                             src={ProImage}
                             alt=""
                             priority
-                            className="
-    mx-auto
-    rounded-xl
-    my-auto
-     relative
-  "
+                            className="mx-auto rounded-xl my-auto relative"
                         />
 
                         <div>
