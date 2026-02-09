@@ -84,21 +84,21 @@ export default function Projects() {
             <div className="grid grid-cols-1 gap-2 text-center">
                 <h1
                     ref={ref}
-                    className={`transition-all font-bold text-2xl sm:text-3xl md:text-4xl text-gray-700 mb-6 duration-1000 ease-out ${isVisible
+                    className={`transition-all font-bold md:text-4xl text-gray-700 mb-6 duration-1000 ease-out ${isVisible
                         ? 'opacity-100 translate-y-0 animate-fade-up'
                         : 'opacity-0 translate-y-10'
                         }`}
                 >
                     Professional Projects
                 </h1>
-                <p className={`text-gray-500 mb-12 max-w-2xl mx-auto text-sm sm:text-base ${isVisible ? 'animate-fade-up' : 'opacity-0'
+                <p className={`text-gray-500 mb-12 ${isVisible ? 'animate-fade-up' : 'opacity-0'
                     }`}>
                     A selection of projects I&apos;ve contributed to, showcasing full-stack development expertise
                 </p>
             </div>
 
             {/* Featured Projects */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 {projectsData.map((project, index) => (
                     <div
                         key={index}
@@ -110,9 +110,9 @@ export default function Projects() {
                         style={{ animationDelay: `${index * 100}ms` }}
                     >
                         {/* Project Image */}
-                        <div className="relative h-40 sm:h-48 bg-gradient-to-br from-amber-100 to-orange-100 overflow-hidden">
+                        <div className="relative h-48 bg-gradient-to-br from-amber-100 to-orange-100 overflow-hidden">
                             <div className="absolute inset-0 flex items-center justify-center">
-                                <div className="text-5xl sm:text-6xl font-bold text-amber-300/50">
+                                <div className="text-6xl font-bold text-amber-300/50">
                                     {project.title.charAt(0)}
                                 </div>
                             </div>
@@ -147,8 +147,8 @@ export default function Projects() {
                         </div>
 
                         {/* Project Content */}
-                        <div className="p-4 sm:p-6">
-                            <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-1">
+                        <div className="p-6">
+                            <h3 className="text-xl font-bold text-gray-800 mb-1">
                                 {project.title}
                             </h3>
                             <p className="text-amber-600 font-medium text-sm mb-3">

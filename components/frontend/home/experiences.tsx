@@ -62,7 +62,7 @@ export default function Experiences() {
             <div className="grid grid-cols-1 gap-2 text-center">
                 <h1
                     ref={ref}
-                    className={`transition-all font-bold text-2xl sm:text-3xl md:text-4xl text-gray-700 mb-16 duration-1000 ease-out ${isVisible
+                    className={`transition-all font-bold md:text-4xl text-gray-700 mb-16 duration-1000 ease-out ${isVisible
                         ? 'opacity-100 translate-y-0 animate-fade-up'
                         : 'opacity-0 translate-y-10'
                         }`}
@@ -71,7 +71,7 @@ export default function Experiences() {
                 </h1>
             </div>
 
-            <div className="relative max-w-4xl mx-auto">
+            <div className="relative">
                 {/* Timeline line - hidden on mobile */}
                 <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-amber-300 via-amber-400 to-amber-300 rounded-full" />
 
