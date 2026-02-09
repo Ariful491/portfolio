@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { ExternalLink, Github } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 interface Project {
     title: string;
@@ -147,24 +148,20 @@ function ProjectCard({ project }: { project: Project }) {
                 {/* Overlay on hover */}
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
                     {project.liveUrl && (
-                        <a
-                            href={project.liveUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-3 bg-white rounded-full hover:bg-amber-500 hover:text-white transition-colors"
+                        <Button
+                            onClick={() => window.open(project.liveUrl, '_blank')}
+                            className="rounded-full w-12 h-12 bg-white hover:bg-amber-500 hover:text-white text-gray-700 shadow-md p-0 transition-colors"
                         >
                             <ExternalLink className="w-5 h-5" />
-                        </a>
+                        </Button>
                     )}
                     {project.githubUrl && (
-                        <a
-                            href={project.githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-3 bg-white rounded-full hover:bg-gray-800 hover:text-white transition-colors"
+                        <Button
+                            onClick={() => window.open(project.githubUrl, '_blank')}
+                            className="rounded-full w-12 h-12 bg-white hover:bg-gray-800 hover:text-white text-gray-700 shadow-md p-0 transition-colors"
                         >
                             <Github className="w-5 h-5" />
-                        </a>
+                        </Button>
                     )}
                 </div>
             </div>

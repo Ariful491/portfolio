@@ -1,6 +1,7 @@
 "use client"
 
 import { HyperText } from "@/components/ui/hyper-text";
+import { Button } from "@/components/ui/button";
 import { DownloadCircle } from "iconoir-react/regular";
 import Image from "next/image";
 import ProImage from "@/public/pp2.png";
@@ -137,10 +138,12 @@ export default function HeroSections() {
                                 Full Stack Developer
                             </p>
                             <div className="mt-5 flex justify-center">
-                                <button className="relative bg-linear-to-bl from-white to-white drop-shadow-gray-100 shadow-2xl hover:from-amber-500 hover:to-amber-100 hover:shadow-lg transition-all py-2.5 px-6 text-base font-semibold sm:py-3 sm:px-8 sm:text-lg rounded-full">
+                                <Button
+                                    className="relative bg-linear-to-bl from-white to-white drop-shadow-gray-100 shadow-2xl hover:from-amber-500 hover:to-amber-100 hover:shadow-lg transition-all py-6 px-6 text-base font-semibold sm:py-8 sm:px-8 sm:text-lg rounded-full text-gray-800 hover:text-white"
+                                >
                                     <span className="flex items-center gap-2 sm:gap-3"> Download CV <DownloadCircle className="h-5 w-5 sm:h-6 sm:w-6" /></span>
                                     <BorderBeam duration={2} size={95} className="from-transparent via-amber-600 to-transparent" />
-                                </button>
+                                </Button>
                             </div>
                         </div>
                     </div>

@@ -2,6 +2,7 @@
 
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Mail, Phone, MapPin, Github, ExternalLink } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const contactInfo = {
     email: "arifulhoque091@gmail.com",
@@ -151,12 +152,12 @@ function ContactForm() {
                         placeholder="Your message..."
                     />
                 </div>
-                <button
+                <Button
                     type="submit"
-                    className="w-full py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold rounded-lg hover:from-amber-600 hover:to-orange-600 transition-all shadow-lg hover:shadow-xl"
+                    className="w-full py-6 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold rounded-lg hover:from-amber-600 hover:to-orange-600 transition-all shadow-lg hover:shadow-xl text-lg"
                 >
                     Send Message
-                </button>
+                </Button>
             </form>
         </div>
     );
