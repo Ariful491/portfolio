@@ -21,9 +21,9 @@ const projectsData: Project[] = [
     {
         title: "EMS (AALO)",
         subtitle: "Admission & Academic Management Module",
-        description: "Designed and implemented a comprehensive Admission Management Module supporting both regular admissions and event-based payment workflows. Developed semi-dynamic admission forms enabling institution-specific customization and flexible data collection.",
-        impact: "250+ educational institutions across Bangladesh",
-        technologies: ["CakePHP", "jQuery", "Bootstrap 5", "Firebase", "MySQL", "JWT"],
+        description: "Designed and implemented a comprehensive Admission Management Module supporting both regular admissions and event-based payment workflows. Implemented secure payment history storage, journal management, and automated journal report generation.",
+        impact: "Used by 250+ educational institutes",
+        technologies: ["CakePHP", "jQuery", "Bootstrap 5", "JWT", "Firebase", "MySQL", "SMS Gateway"],
         liveUrl: "https://www.ems.gccc.edu.bd/events",
         image: "/placeholder-ems.jpg",
         featured: true
@@ -31,9 +31,9 @@ const projectsData: Project[] = [
     {
         title: "NPF (National Portal Framework)",
         subtitle: "Government Content Management System",
-        description: "Ensured timely dissemination of critical public information, including emergency alerts and election-related updates. Developed a centralized content management system supporting 3,000+ government websites.",
+        description: "Ensured timely dissemination of critical public information, including emergency alerts and election-related updates. Developed and maintained a centralized content management system supporting 3,000+ government websites.",
         impact: "3,000+ government websites",
-        technologies: ["NestJS", "Next.js", "MongoDB", "Material UI"],
+        technologies: ["NestJS", "Next.js", "MongoDB", "Material UI", "Phalcon", "Drupal"],
         liveUrl: "#",
         image: "/placeholder-npf.jpg",
         featured: true
@@ -51,7 +51,7 @@ const projectsData: Project[] = [
     {
         title: "PMS (Portal Management System)",
         subtitle: "NPF Portal Lifecycle Manager",
-        description: "A centralized system designed to manage the NPF portal lifecycle. It facilitates new domain portal applications, approval workflows, and decision-making processes to either publish portals live or reject submissions.",
+        description: "A centralized system designed to manage the NPF portal lifecycle. It facilitates new domain portal applications, approval workflows, and decision-making processes.",
         impact: "Governance across departments",
         technologies: ["Laravel", "jQuery", "Bootstrap 5"],
         liveUrl: "#",
@@ -60,7 +60,7 @@ const projectsData: Project[] = [
     {
         title: "Smart Job",
         subtitle: "Government Job Portal",
-        description: "The system supports simultaneous posting of multiple government job circulars from different divisions, ensuring timely and coordinated publication nationwide with exam scheduling and applicant tracking.",
+        description: "The system supports simultaneous posting of multiple government job circulars from different divisions, ensuring timely and coordinated publication nationwide with exam scheduling.",
         impact: "Nationwide job distribution",
         technologies: ["Laravel", "jQuery", "Bootstrap 5"],
         liveUrl: "#",
@@ -69,11 +69,29 @@ const projectsData: Project[] = [
     {
         title: "ARBITBD",
         subtitle: "E-commerce Platform",
-        description: "Full-featured e-commerce platform with product management, shopping cart, secure checkout, and order tracking capabilities.",
-        impact: "Complete e-commerce solution",
+        description: "Full-featured e-commerce platform.",
+        impact: "E-commerce solution",
         technologies: ["Vue.js", "Laravel", "MySQL"],
         liveUrl: "#",
         image: "/placeholder-arbitbd.jpg"
+    },
+    {
+        title: "PPW",
+        subtitle: "Pesticide License Renewal",
+        description: "Pesticide License Renewal & Correction Application Process system.",
+        impact: "Government Service",
+        technologies: ["Laravel", "jQuery"],
+        liveUrl: "#",
+        image: "/placeholder-ppw.jpg"
+    },
+    {
+        title: "Suit Management",
+        subtitle: "DG Food Ministry",
+        description: "Case management system for DG Food ministry.",
+        impact: "Management System",
+        technologies: ["CakePHP", "Laravel"],
+        liveUrl: "#",
+        image: "/placeholder-suit.jpg"
     }
 ];
 
@@ -81,7 +99,7 @@ export default function Projects() {
     const { ref, isVisible } = useScrollReveal();
 
     return (
-        <section id="projects" className="px-4 z-10 mb-40 overflow-hidden">
+        <section id="projects" className="px-4 z-10 mb-20 overflow-hidden">
             <div className="grid grid-cols-1 gap-2 text-center">
                 <h1
                     ref={ref}
@@ -98,7 +116,7 @@ export default function Projects() {
                 </p>
             </div>
 
-            {/* Featured Projects */}
+            {/* Projects Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 {projectsData.map((project, index) => (
                     <ProjectCard key={index} project={project} />
@@ -107,15 +125,14 @@ export default function Projects() {
 
             {/* Additional Projects Link */}
             <div className="text-center mt-12">
-                <a
-                    href="https://github.com/ariful"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-gray-600 hover:text-amber-600 transition-colors font-medium"
+                <Button
+                    onClick={() => window.open("https://github.com/ariful", "_blank")}
+                    variant="ghost"
+                    className="inline-flex items-center gap-2 text-gray-600 hover:text-amber-600 transition-colors font-medium text-base h-auto py-2"
                 >
                     <Github className="w-5 h-5" />
                     View more on GitHub
-                </a>
+                </Button>
             </div>
         </section>
     );
@@ -147,7 +164,7 @@ function ProjectCard({ project }: { project: Project }) {
                 )}
                 {/* Overlay on hover */}
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                    {project.liveUrl && (
+                    {project.liveUrl && project.liveUrl !== "#" && (
                         <Button
                             onClick={() => window.open(project.liveUrl, '_blank')}
                             className="rounded-full w-12 h-12 bg-white hover:bg-amber-500 hover:text-white text-gray-700 shadow-md p-0 transition-colors"

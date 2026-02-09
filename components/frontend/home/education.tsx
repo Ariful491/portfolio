@@ -50,7 +50,7 @@ export default function Education() {
     const { ref, isVisible } = useScrollReveal();
 
     return (
-        <section id="education" className="px-4 z-10 mb-40 overflow-hidden">
+        <section id="education" className="px-4 z-10 mb-20 overflow-hidden">
             <div className="grid grid-cols-1 gap-2 text-center">
                 <h1
                     ref={ref}

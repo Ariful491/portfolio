@@ -9,6 +9,7 @@ import ReactLogo from "@/public/React.svg";
 import nextLogo from "@/public/Next.js.svg";
 import BootstrapLogo from "@/public/Bootstrap.svg";
 import CakePHPLogo from "@/public/CakePHP.svg";
+import CodeIgniterLogo from "@/public/CodeIgniter.svg";
 import JavaScriptLogo from "@/public/JavaScript.svg";
 import JqueryLogo from "@/public/jQuery.svg";
 import TailwindLogo from "@/public/Tailwind CSS.svg";
@@ -36,19 +37,23 @@ const skillCategories: SkillCategory[] = [
         skills: [
             { name: "Laravel", logo: laravel, level: 5 },
             { name: "CakePHP", logo: CakePHPLogo, level: 5 },
-            { name: "PHP", logo: PHPLogo, level: 5 },
+            { name: "CodeIgniter", logo: CodeIgniterLogo, level: 5 },
+            { name: "PHP (OOP)", logo: PHPLogo, level: 5 },
             { name: "NestJS", logo: NestLogo, level: 4 },
-            { name: "CodeIgniter", level: 4 }
+            { name: "Rest API", level: 5 }
         ]
     },
     {
         name: "Frontend Development",
         skills: [
             { name: "Vue.js", logo: VueLogo, level: 5 },
+            { name: "Nuxt.js", logo: NuxtLogo, level: 5 },
             { name: "React.js", logo: ReactLogo, level: 4 },
             { name: "Next.js", logo: nextLogo, level: 4 },
-            { name: "Nuxt.js", logo: NuxtLogo, level: 4 },
+            { name: "Livewire", level: 4 },
+            { name: "Inertia.js", level: 4 },
             { name: "JavaScript", logo: JavaScriptLogo, level: 5 },
+            { name: "TypeScript", level: 4 },
             { name: "jQuery", logo: JqueryLogo, level: 5 }
         ]
     },
@@ -57,27 +62,30 @@ const skillCategories: SkillCategory[] = [
         skills: [
             { name: "Tailwind CSS", logo: TailwindLogo, level: 5 },
             { name: "Bootstrap", logo: BootstrapLogo, level: 5 },
-            { name: "HTML/CSS", level: 5 }
+            { name: "Element UI", level: 5 },
+            { name: "SCSS/CSS3", level: 5 },
+            { name: "HTML5", level: 5 }
         ]
     },
     {
-        name: "Database & Tools",
+        name: "Database & DevOps",
         skills: [
             { name: "MySQL", logo: MySQLLogo, level: 5 },
             { name: "MongoDB", level: 4 },
-            { name: "Redis", logo: RedisLogo, level: 3 },
             { name: "Docker", level: 3 },
-            { name: "Git/GitHub", level: 5 }
+            { name: "Git/GitHub", level: 5 },
+            { name: "GitLab", level: 5 }
         ]
     },
     {
-        name: "Other Technologies",
+        name: "Tools & Others",
         skills: [
-            { name: "REST API", level: 5 },
-            { name: "Firebase", level: 4 },
-            { name: "JWT", level: 5 },
+            { name: "Postman", level: 5 },
+            { name: "KeyCloak (SSO)", level: 4 },
             { name: "WebSockets", level: 4 },
-            { name: "KeyCloak (SSO)", level: 3 }
+            { name: "Firebase", level: 4 },
+            { name: "Click Up", level: 4 },
+            { name: "Slack", level: 5 }
         ]
     }
 ];
@@ -86,7 +94,7 @@ export default function Skills() {
     const { ref, isVisible } = useScrollReveal();
 
     return (
-        <section id="skills" className="px-4 z-10 mb-40 overflow-hidden">
+        <section id="skills" className="px-4 z-10 mb-20 overflow-hidden">
             <div className="grid grid-cols-1 gap-2 text-center">
                 <h1
                     ref={ref}
@@ -127,44 +135,31 @@ function SkillCard({ category }: { category: SkillCategory }) {
             <h3 className="text-lg font-bold text-gray-800 mb-4 pb-2 border-b border-gray-100">
                 {category.name}
             </h3>
-            <div className="space-y-3">
+            <div className="flex flex-wrap gap-3">
                 {category.skills.map((skill, skillIndex) => (
-                    <div key={skillIndex} className="flex items-center gap-3">
+                    <div
+                        key={skillIndex}
+                        className="flex items-center gap-2 bg-gray-50 border border-gray-100 px-3 py-2 rounded-lg hover:bg-amber-50 hover:border-amber-200 transition-colors group"
+                    >
                         {/* Logo */}
-                        <div className="w-8 h-8 flex items-center justify-center bg-gray-50 rounded-lg">
+                        <div className="w-6 h-6 flex items-center justify-center">
                             {skill.logo ? (
                                 <Image
                                     src={skill.logo}
                                     alt={skill.name}
-                                    className="w-5 h-5"
+                                    className="w-5 h-5 group-hover:scale-110 transition-transform"
                                 />
                             ) : (
-                                <span className="text-xs font-bold text-gray-400">
+                                <span className="text-xs font-bold text-gray-400 group-hover:text-amber-500">
                                     {skill.name.charAt(0)}
                                 </span>
                             )}
                         </div>
 
-                        {/* Skill name and level */}
-                        <div className="flex-1">
-                            <div className="flex justify-between items-center mb-1">
-                                <span className="text-sm font-medium text-gray-700">
-                                    {skill.name}
-                                </span>
-                            </div>
-                            {/* Level indicator */}
-                            <div className="flex gap-1">
-                                {[1, 2, 3, 4, 5].map((level) => (
-                                    <div
-                                        key={level}
-                                        className={`h-1.5 flex-1 rounded-full ${level <= skill.level
-                                            ? 'bg-amber-400'
-                                            : 'bg-gray-200'
-                                            }`}
-                                    />
-                                ))}
-                            </div>
-                        </div>
+                        {/* Skill name */}
+                        <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
+                            {skill.name}
+                        </span>
                     </div>
                 ))}
             </div>

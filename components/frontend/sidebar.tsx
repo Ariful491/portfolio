@@ -13,7 +13,7 @@ import {
     Mail,
     Suitcase
 } from 'iconoir-react';
-import { MenuIcon, PanelBottomClose, Layers, X } from 'lucide-react';
+import { MenuIcon, PanelBottomClose, Layers, X, Trophy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface MenuItem {
@@ -30,6 +30,7 @@ const menus: MenuItem[] = [
     { name: 'Projects', link: '#projects', icon: <Layers />, section: 'projects' },
     { name: 'Skills', link: '#skills', icon: <Code />, section: 'skills' },
     { name: 'Education', link: '#education', icon: <GraduationCap />, section: 'education' },
+    { name: 'Activities', link: '#extra-curricular', icon: <Trophy />, section: 'extra-curricular' },
     { name: 'Contact', link: '#contact', icon: <Mail />, section: 'contact' },
 ];
 

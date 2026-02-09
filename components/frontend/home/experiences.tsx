@@ -13,44 +13,44 @@ interface Experience {
 
 const experienceData: Experience[] = [
     {
-        title: "Software Engineer (Full-stack)",
+        title: "Software Engineer",
         company: "Soft BD Ltd",
         companyColor: "text-blue-600",
-        duration: "Oct 2021 - Present",
-        description: "Developing and maintaining Education Management System (EMS) serving 250+ educational institutions. Built Admission Management Module, implemented Firebase push notifications, and integrated payment gateways.",
-        technologies: ["CakePHP", "Vue.js", "Bootstrap 5", "MySQL", "Firebase", "jQuery"]
+        duration: "Feb 2025 - Present",
+        description: "Supported team growth through effective knowledge sharing and mentoring of junior developers, promoting coding standards, collaborative development, and technical consistency.",
+        technologies: ["Team Leadership", "Mentoring", "Code Review"]
     },
     {
-        title: "Software Engineer (Full-stack)",
+        title: "Assistant Software Engineer",
+        company: "Soft BD Ltd",
+        companyColor: "text-blue-600",
+        duration: "Dec 2022 - Jan 2025",
+        description: "Contributed to the development of a scalable Enterprise Management System (Education Management System) used by large institutions and government entities, implementing admission management, RBAC, secure payment integrations, and data-driven reporting features.",
+        technologies: ["CakePHP", "Vue.js", "MySQL", "RBAC", "Payment Gateways"]
+    },
+    {
+        title: "Software Engineer",
         company: "OTITHEE Limited",
         companyColor: "text-purple-600",
-        duration: "Apr 2024 - Present",
-        description: "Developing NPF (National Portal Framework), a centralized CMS supporting 3,000+ government websites. Implemented emergency alerts and election-related updates dissemination.",
-        technologies: ["NestJS", "Next.js", "TypeScript", "MongoDB", "Material UI"]
+        duration: "Mar 2022 - Nov 2022",
+        description: "Played a key role in building and maintaining internal business solutions, including a training management platform, an agent commission distribution system, and the News Portal, supporting operational efficiency and digital content delivery.",
+        technologies: ["Laravel", "News Portal", "Business Solutions"]
     },
     {
-        title: "Web Developer",
-        company: "One Point IT Solution",
+        title: "Junior Web Application Developer",
+        company: "One Point IT Solutions",
         companyColor: "text-green-600",
-        duration: "Dec 2020 - Oct 2021",
-        description: "Built and maintained web applications using Laravel, managed database design and REST API development. Delivered multiple client projects including e-commerce platforms.",
-        technologies: ["Laravel", "jQuery", "Bootstrap", "MySQL"]
+        duration: "Oct 2021 - Feb 2022",
+        description: "Developed and maintained customized POS solutions, courier tracking systems, Somity management platforms, and MLM applications using Laravel and CodeIgniter, tailored to organizational requirements and operational workflows.",
+        technologies: ["Laravel", "CodeIgniter", "POS", "MLM"]
     },
     {
-        title: "Intern Web Developer",
-        company: "Host Rare Ltd",
+        title: "Junior Web Application Developer",
+        company: "Host Rare Limited",
         companyColor: "text-orange-600",
-        duration: "May 2020 - Oct 2020",
-        description: "Developed WordPress themes and plugins, collaborated with senior developers on client projects, gained hands-on experience with PHP and MySQL.",
-        technologies: ["WordPress", "PHP", "MySQL", "jQuery"]
-    },
-    {
-        title: "Freelance Web Developer",
-        company: "Self-Employed",
-        companyColor: "text-amber-600",
-        duration: "2019 - Present",
-        description: "Delivering custom web solutions for various clients, including full-stack development, API integrations, and database design.",
-        technologies: ["Laravel", "Vue.js", "React", "MySQL"]
+        duration: "Sep 2020 - Aug 2021",
+        description: "Contributed to the development and maintenance of customized billing and e-commerce systems using Laravel, ensuring system stability and efficient transaction processing.",
+        technologies: ["Laravel", "E-commerce", "Billing Systems"]
     }
 ];
 
@@ -58,7 +58,7 @@ export default function Experiences() {
     const { ref, isVisible } = useScrollReveal();
 
     return (
-        <section id="experience" className="px-4 z-10 mb-40 overflow-hidden">
+        <section id="experience" className="px-4 z-10 mb-20 overflow-hidden">
             <div className="grid grid-cols-1 gap-2 text-center">
                 <h1
                     ref={ref}

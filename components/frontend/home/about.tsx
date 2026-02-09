@@ -7,7 +7,7 @@ export default function About() {
     const { ref, isVisible } = useScrollReveal();
     return (
         <>
-            <section id="about" className="px-4 z-10 mb-40 overflow-hidden">
+            <section id="about" className="px-4 z-10 mb-20 overflow-hidden">
                 <div className="grid grid-cols-1 gap-2 text-center">
                     <h1
                         ref={ref}
@@ -38,7 +38,8 @@ export default function About() {
                             Specialized in <span className="text-amber-600 font-semibold">Education Management Systems (EMS)</span> and
                             government web applications, including legacy system modernization, payment gateway integration,
                             Firebase push notifications, and REST API development. Proficient in object-oriented programming,
-                            database design, Agile workflows, and full application lifecycle management.
+                            database design, Agile workflows, and full application lifecycle management from requirement analysis
+                            to deployment and long-term maintenance.
                         </p>
                     </div>
 

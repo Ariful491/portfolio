@@ -8,6 +8,7 @@ import Projects from "@/components/frontend/home/projects";
 import Skills from "@/components/frontend/home/skills";
 import Education from "@/components/frontend/home/education";
 import Contact from "@/components/frontend/home/contact";
+import ExtraCurricular from "@/components/frontend/home/ExtraCurricular";
 import { cn } from "@/lib/utils";
 
 export default function Home() {
@@ -34,6 +35,7 @@ export default function Home() {
             <Projects />
             <Skills />
             <Education />
+            <ExtraCurricular />
             <Contact />
         </AppLayout>
     );
